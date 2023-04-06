@@ -35,5 +35,10 @@ extern "C" {
 #define DBG_PRINTF(fmt, args...) /* Don't do anything in release builds*/
 #endif
 
+#if defined(DEBUG) && !defined(NDEBUG)
 #define myASSERT(__e) \
     ((__e) ? (void)0 : my_assert_func(__FILE__, __LINE__, __func__, #__e))
+#else
+#define myASSERT(__e) \
+    ((__e) ? (void)0 : my_assert_func("", "", "", ""))
+#endif
