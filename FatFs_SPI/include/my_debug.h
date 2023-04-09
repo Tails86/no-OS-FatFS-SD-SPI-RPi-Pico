@@ -14,6 +14,7 @@ specific language governing permissions and limitations under the License.
 #pragma once
 
 #include <stdio.h>
+#include "assert.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -40,5 +41,5 @@ extern "C" {
     ((__e) ? (void)0 : my_assert_func(__FILE__, __LINE__, __func__, #__e))
 #else
 #define myASSERT(__e) \
-    ((__e) ? (void)0 : my_assert_func("", "", "", ""))
+    ((__e) ? (void)0 : my_assert_func("", 0, "", ""))
 #endif
